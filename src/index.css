@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Quicksand:wght@300..700&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+  
+}
+body 
+{
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  /* overflow: hidden; */
+  overflow-x: hidden;
+
+  
+}
+a 
+{
+  text-decoration: none !important;
+}
+ul 
+{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+p 
+{
+  margin-bottom: 0 !important;
+}
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+.ps__thumb-x {
+  display: none !important;
+}

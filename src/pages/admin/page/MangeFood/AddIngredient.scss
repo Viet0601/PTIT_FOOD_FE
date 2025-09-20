@@ -1,0 +1,136 @@
+.add-ingredient {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+  
+    .ingredient-form {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 500px;
+      transition: all 0.3s ease-in-out;
+  
+      h2 {
+        text-align: center;
+        margin-bottom: 1.5rem;
+        color: #333;
+      }.title
+      {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #e27432;
+      }
+  
+      .form-group {
+        margin-bottom: 1.2rem;
+  
+        label {
+          display: block;
+          margin-bottom: 0.5rem;
+          font-weight: 600;
+          color: #444;
+        }
+  
+        input {
+          width: 100%;
+          padding: 0.8rem 1rem;
+          border: 1px solid #ccc;
+          border-radius: 8px;
+          font-size: 1rem;
+          transition: border 0.2s ease;
+  
+          &:focus {
+            border-color: #4cafef;
+            outline: none;
+            box-shadow: 0 0 6px rgba(76, 175, 239, 0.4);
+          }
+        }
+      }
+  
+      .btn-submit {
+        width: 100%;
+        padding: 8px;
+        background: #4cafef;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s ease, transform 0.2s ease;
+  
+        &:hover {
+          background: #2196f3;
+          transform: translateY(-2px);
+        }
+  
+        &:active {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+  
+  /* 📱 Mobile nhỏ (<576px) */
+  @media (max-width: 576px) {
+    .add-ingredient {
+      padding: 1rem;
+  
+      .ingredient-form {
+        padding: 1.2rem;
+        border-radius: 12px;
+  
+        h2 {
+          font-size: 1.2rem;
+        }
+  
+        input {
+          font-size: 0.9rem;
+          padding: 0.6rem 0.8rem;
+        }
+  
+        .btn-submit {
+          font-size: 0.9rem;
+          padding: 0.7rem;
+        }
+      }
+    }
+  }
+  
+  /* 📱 Tablet (576px – 992px) */
+  @media (min-width: 576px) and (max-width: 992px) {
+    .add-ingredient {
+      padding: 1.5rem;
+  
+      .ingredient-form {
+        padding: 1.8rem;
+        max-width: 600px; /* rộng hơn chút cho tablet */
+      }
+    }
+  }
+  
+  /* 🖥️ Desktop lớn (>1200px) */
+  @media (min-width: 1200px) {
+    .add-ingredient {
+      .ingredient-form {
+        max-width: 700px;
+        padding: 2.5rem;
+  
+        h2 {
+          font-size: 1.6rem;
+        }
+  
+        input {
+          font-size: 1.1rem;
+        }
+  
+        .btn-submit {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
+  

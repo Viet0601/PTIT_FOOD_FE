@@ -1,0 +1,114 @@
+
+// File: DeleteFoodModal.scss
+
+/* Basic variables */
+$primary: #e27432; /* user's requested main color */
+$backdrop: rgba(15, 23, 42, 0.6);
+$modal-bg: #ffffff;
+$radius: 12px;
+
+.dfm-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  z-index: 9000;
+  /* smooth fade-in */
+  animation: dfm-fade 220ms ease forwards;
+}
+
+.dfm-modal {
+  width: min(520px, calc(100% - 48px));
+  background: $modal-bg;
+  border-radius: $radius;
+  box-shadow: 0 10px 30px rgba(2,6,23,0.12);
+  overflow: hidden;
+  transform-origin: center;
+  /* slide + scale entrance */
+  animation: dfm-pop 260ms cubic-bezier(.2,.9,.26,1) forwards;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.dfm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.dfm-title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.dfm-close {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 8px;
+}
+.dfm-close:hover { background: rgba(0,0,0,0.04); }
+
+.dfm-body {
+  padding: 18px 20px;
+  font-size: 15px;
+  color: #222;
+}
+
+.dfm-footer {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  padding: 14px 18px;
+  border-top: 1px solid rgba(0,0,0,0.04);
+}
+
+.dfm-btn {
+  min-width: 96px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.dfm-btn:active { transform: translateY(1px) scale(0.998); }
+
+.dfm-cancel {
+  background: transparent;
+  color: #444;
+}
+
+.dfm-confirm {
+  background: $primary;
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(226,116,50,0.18);
+}
+
+/* gentle hover lifts */
+.dfm-btn:hover { transform: translateY(-3px); }
+
+/* Animations */
+@keyframes dfm-fade {
+  0% { background: transparent; }
+  100% { background: $backdrop; }
+}
+
+@keyframes dfm-pop {
+  0% { transform: translateY(14px) scale(.98); opacity: 0; }
+  60% { transform: translateY(-6px) scale(1.005); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* small screens tweak */
+@media (max-width: 480px) {
+  .dfm-modal { width: calc(100% - 28px); border-radius: 10px; }
+  .dfm-footer { padding-bottom: 18px; }
+}
+

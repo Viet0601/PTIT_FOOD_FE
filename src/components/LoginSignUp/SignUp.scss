@@ -1,0 +1,31 @@
+.register-form
+{
+    button 
+    {
+        width: 100%;
+        padding: 5px 0px;
+        border: none;
+        background-color: tomato;
+        color: #fff;
+        font-weight: 500;
+        border-radius: 5px;
+    }
+    p 
+    {
+        margin-top: 10px;
+        font-size: 13px;
+    }
+    .signup-now
+    {
+        color: tomato;
+        font-weight: 500;
+        font-size: 15px;
+        margin-left: 5px;
+        cursor: pointer ;
+    }
+    .btn-login-inactive 
+    {
+        cursor: no-drop !important;
+        background-color: gray;
+    }
+}

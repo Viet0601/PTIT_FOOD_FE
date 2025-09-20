@@ -1,0 +1,40 @@
+
+.cart-payment-total
+{
+    &-left
+    {
+        
+        .cart-payment-total-continue
+        {
+            width: 100%;
+            padding: 3px 0px;
+            margin-top: 10px;
+            border: none;
+            font-weight: 500;
+            background-color: tomato;
+            color: #fff;
+            border-radius: 5px;
+            
+        }
+        width: 100%;
+       
+        padding: 20px;
+        border-radius: 8px;
+        p 
+        {
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px !important;
+        }
+        .total , .total-price
+        {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+    }
+   
+}
+

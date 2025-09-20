@@ -1,0 +1,121 @@
+// .list-order-cover 
+// {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 15px;
+//     .list-order-item 
+//     {
+//         display: grid;
+//         .image-order 
+//         {
+//             width: 40px;
+//         }
+//         border: 1px solid #ddd;
+//         padding: 10px 20px; 
+//         grid-template-columns: 0.5fr 2.5fr 1fr 1fr 1fr 1fr;  
+//         align-items: center;
+//         font-size: 14px;
+//         gap: 20px;
+//     }
+//     .status-order 
+//     {
+//         font-weight: 600;
+//     }
+//     .track-btn-order 
+//     {
+//         padding:3px 5px;
+//         border: none;
+//         border-radius: 5px;
+//         background-color: #ffe1e1;
+//         color: #454545;
+//         cursor: pointer;
+//     }
+// }
+// @media (max-width:768px) {
+//     .list-order-item 
+//     {
+//         .image-order 
+//         {
+//             width: 30px !important;
+//         }
+//         grid-template-columns: 1fr 2fr 1fr !important;  
+//         row-gap: 5px !important;
+//         font-size: 12px !important; 
+//         gap: 8px !important;
+//         .track-btn-order 
+//     {
+//         font-size: 11px !important;
+//     }
+//     }
+// }
+.orders-page {
+  min-height: 400px;
+  background: #ffffff;
+  padding: 28px;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  margin-bottom: 20px;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: all .18s ease;
+}
+.order-card:hover { transform: translateY(-2px); box-shadow: 0 10px 24px rgba(226,116,50,0.08); }
+
+.summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  cursor: pointer;
+}
+.summary strong { margin-right: 12px; }
+.summary small { margin-right: 12px; color:#555; }
+.summary .status {
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  margin-left: 6px;
+  background: #f0f0f0;
+}
+.summary .Đanggiaohàng { background:#16a34a; color:#fff; }
+.summary .Đãgiaohàng { background:#16a34a; color:#fff; }
+.summary .Chờxácnhận { background:#facc15; color:#222; }
+.summary .Chờlấyhàng { background:#facc15; color:#222; }
+
+.details { padding: 0 16px 16px; border-top: 1px solid #f5f5f5; }
+
+.items { margin:12px 0; }
+.item { display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px dashed #eee; font-size:14px; }
+
+.actions { display:flex; gap:10px; margin-top:14px; }
+.actions button {
+  flex:1;
+  padding:10px 14px;
+  border-radius:8px;
+  border:none;
+  cursor:pointer;
+  transition: all .16s ease;
+  font-weight:600;
+}
+.actions .track { background:#e27432; color:#fff; }
+.actions .cancel { background:#f87171; color:#fff; }
+.actions .feedback { background:rgb(38, 152, 38); color:#fff; }
+.actions button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
+
+@media (max-width: 600px) {
+  .summary { flex-direction: column; align-items:flex-start; gap:6px; }
+  .actions { flex-direction: column; }
+}

@@ -1,0 +1,163 @@
+$bg: #ffffff;
+$ink: #0f172a; // slate-900
+$muted: #6b7280; // gray-500
+$line: #e5e7eb; // gray-200
+$primary: #111827; // gray-900 for text/icons
+$shadow: 0 6px 24px rgba(15, 23, 42, 0.08);
+$radius: 18px;
+
+.admindash {
+  --gap: 16px;
+  background: $bg;
+  color: $ink;
+  min-height: 100vh;
+  padding: 20px clamp(16px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+
+    .admindash__title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      h1 { font-size: clamp(18px, 2.3vw, 24px); font-weight: 700; }
+      svg { opacity: .9; }
+    }
+
+    & .admindash__actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .select {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 12px;
+        border: 1px solid $line;
+        border-radius: $radius;
+        box-shadow: $shadow;
+        background: $bg;
+        select {
+          appearance: none;
+          border: none;
+          outline: none;
+          background: transparent;
+          font-weight: 600;
+          color: $ink;
+          padding-right: 18px;
+          cursor: pointer;
+        }
+        svg { pointer-events: none; }
+      }
+
+      .primary {
+        padding: 10px 14px;
+        border-radius: $radius;
+        border: 1px solid $line;
+        background: #f9fafb;
+        box-shadow: $shadow;
+        font-weight: 700;
+        transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+        &:hover { transform: translateY(-1px); box-shadow: 0 10px 28px rgba(15,23,42,.12); background: white; }
+        &:active { transform: translateY(0); }
+      }
+    }
+  }
+
+  .grid {
+    display: grid;
+    gap: var(--gap);
+  }
+
+  .kpis {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    @media (max-width: 1100px) { grid-template-columns: repeat(2, 1fr); }
+    @media (max-width: 620px)  { grid-template-columns: 1fr; }
+  }
+
+  .charts {
+    grid-template-columns: 2fr 1fr;
+    align-items: stretch;
+    @media (max-width: 1100px) { grid-template-columns: 1fr; }
+  }
+
+  .list {
+    grid-template-columns: 1.3fr 1fr;
+    @media (max-width: 1100px) { grid-template-columns: 1fr; }
+  }
+
+  .card {
+    background: $bg;
+    border: 1px solid $line;
+    border-radius: $radius;
+    box-shadow: $shadow;
+    padding: 16px;
+
+    &__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+      h3 { font-size: 16px; font-weight: 800; }
+      .muted { color: $muted; font-size: 13px; }
+    }
+  }
+
+  .kpi {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    &__icon {
+      width: 44px; height: 44px;
+      display: grid; place-items: center;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid $line;
+    }
+
+    &__meta {
+      display: flex; flex-direction: column;
+      .kpi__label { color: $muted; font-weight: 600; font-size: 12px; }
+      .kpi__value { font-size: 20px; font-weight: 800; letter-spacing: .2px; }
+    }
+  }
+
+  .chart {
+    .chart__body { height: 300px; }
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; color: $muted; font-size: 13px;
+      .dot { display: inline-block; width: 8px; height: 8px; border-radius: 999px; background: #111827; margin-right: 6px; }
+    }
+  }
+
+  .tablewrap { overflow: auto; }
+  .table {
+    width: 100%; border-collapse: collapse; font-size: 14px;
+    th, td { text-align: left; padding: 10px 8px; border-bottom: 1px dashed $line; }
+    th { color: $muted; font-weight: 700; }
+  }
+
+  .activity {
+    display: grid; gap: 10px; font-size: 14px;
+    li { display: flex; align-items: center; gap: 8px; }
+    .dot { width: 8px; height: 8px; background: #10b981; border-radius: 999px; display: inline-block; }
+  }
+
+  &__footer {
+    margin-top: 10px; padding: 12px 0; color: $muted; font-size: 12px; text-align: center;
+  }
+}
+
+// Smooth page-level intro
+.admindash { animation: fadeIn .35s ease-out; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }

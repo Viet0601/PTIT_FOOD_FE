@@ -1,0 +1,124 @@
+.admin-foods {
+  .btn-detail {
+    background: #e27432;
+    border: none;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #c85f28;
+    }
+  }
+  padding: 20px;
+  background: #fff;
+  min-height: 100vh;
+
+  .title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #e27432;
+    text-align: center;
+  }
+
+  .foods-table {
+    display: grid;
+    gap: 10px;
+
+    .table-header,
+    .table-row {
+      gap: 8px;
+      display: grid;
+      grid-template-columns: 80px 1fr 1fr 120px 160px;
+      align-items: center;
+      padding: 12px 15px;
+      border-radius: 12px;
+      background: #fafafa;
+      transition: all 0.3s ease;
+    }
+
+    .table-header {
+      font-weight: bold;
+      background: #e27432;
+      color: #fff;
+    }
+
+    .table-row:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .food-img {
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      .btn {
+        padding: 6px 12px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.3s ease;
+
+        &.edit {
+          background: #e27432;
+          color: white;
+        }
+
+        &.delete {
+          background: #dc2626;
+          color: white;
+        }
+
+        &:hover {
+          opacity: 0.85;
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  /* Responsive */
+  @media (max-width: 992px) {
+    .foods-table {
+      .table-header,
+      .table-row {
+        grid-template-columns: 60px 1fr 80px;
+        grid-template-areas:
+          "img name actions"
+          "img category actions"
+          "img price actions";
+
+        > div:nth-child(1) {
+          grid-area: img;
+        }
+        > div:nth-child(2) {
+          grid-area: name;
+        }
+        > div:nth-child(3) {
+          grid-area: category;
+        }
+        > div:nth-child(4) {
+          grid-area: price;
+        }
+        > div:nth-child(5) {
+          grid-area: actions;
+        }
+      }
+
+      .table-header {
+        display: none; // ẩn header khi mobile
+      }
+    }
+  }
+}

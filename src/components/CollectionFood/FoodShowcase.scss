@@ -1,0 +1,99 @@
+$primary: #E27432; // màu chủ đạo
+$bg: #ffffff;
+$text: #121417;
+$muted: #6b7280;
+$card: #ffffff;
+$border: #ececec;
+$shadow: 0 10px 30px rgba(18,20,23,0.08);
+
+.fg-wrapper {
+  --radius: 18px;
+  max-width: 1200px;
+  margin: 24px auto 80px;
+  padding: 0 16px;
+  color: $text;
+}
+
+.fg-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; margin-bottom: 18px;
+  h1 { font-size: clamp(22px, 2.8vw, 32px); margin: 0; }
+  .subtitle { color: $muted; margin: 4px 0 0; }
+  .right { display: flex; gap: 10px; }
+
+}
+
+.fg-controls {
+  display: grid; grid-template-columns: 1fr; gap: 12px; margin: 14px 0 18px;
+  @media (min-width: 768px) { grid-template-columns: 1.2fr 1fr auto; align-items: center; }
+
+  .search {
+    display: flex; align-items: center; gap: 8px; border: 1px solid $border; border-radius: 999px;
+    padding: 10px 14px; background: #fff; box-shadow: $shadow;
+    input { border: none; outline: none; flex: 1; font-size: 15px; }
+    .icon-btn { border: none; background: transparent; cursor: pointer; opacity: .7; }
+  }
+
+  .filters {
+    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    svg { opacity: .7; }
+    .chip {
+      border: 1px solid $border; background: #fff; padding: 8px 12px; border-radius: 999px; cursor: pointer;
+      transition: all .2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      &.active, &:hover { background: $primary; border-color: $primary; color: #fff; transform: translateY(-1px); }
+    }
+  }
+
+  .sort {
+    display: flex; align-items: center; gap: 10px; justify-content: flex-end;
+    label { color: $muted; }
+    select { border: 1px solid $border; border-radius: 12px; padding: 10px 12px; background: #fff; }
+  }
+}
+
+.fg-grid {
+  min-height: 300px;
+  list-style: none; display: grid; grid-template-columns: repeat(1, minmax(0,1fr)); gap: 14px; padding: 0; margin: 0;
+  @media (min-width: 640px) { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  @media (min-width: 1024px) { grid-template-columns: repeat(4, minmax(0,1fr)); }
+}
+.fg-grid-no-data 
+{
+  width: 100%;
+  min-height: 300px;
+}
+
+.card {
+  background: $card; border: 1px solid $border; border-radius: var(--radius); overflow: hidden; box-shadow: $shadow;
+  display: flex; flex-direction: column;
+  .thumb {
+    position: relative; aspect-ratio: 4/3; overflow: hidden;
+    img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); transition: transform .6s cubic-bezier(.2, .8, .2, 1); }
+    .fav {
+      position: absolute; top: 10px; right: 10px; border: none; background: rgba(255,255,255,.9); padding: 8px; border-radius: 999px; cursor: pointer; transition: transform .2s ease, background .2s ease;
+      &.on { background: $primary; color: #fff; }
+      &:hover { transform: scale(1.05); }
+    }
+  }
+  &:hover .thumb img { transform: scale(1.08); }
+
+  .info { padding: 12px; display: grid; gap: 10px; }
+  .title-row { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  h3 { margin: 0; font-size: 16px; font-weight: 700; }
+  .category { font-size: 12px; color: $muted; border: 1px solid $border; padding: 4px 8px; border-radius: 999px; }
+  .meta { display: flex; align-items: center; justify-content: space-between; color: $muted; }
+  .price { color: $text; font-weight: 800; }
+
+  .add-btn {
+    display: inline-flex; align-items: center; gap: 8px; justify-content: center; width: 100%;
+    background: $primary; color: #fff; border: none; border-radius: 12px; padding: 10px 12px; cursor: pointer;
+    transition: transform .1s ease, box-shadow .2s ease; box-shadow: 0 8px 18px rgba(226, 116, 50, .25);
+    &:active { transform: translateY(1px); box-shadow: 0 4px 10px rgba(226, 116, 50, .2); }
+  }
+}
+
+.fg-pagination {
+  margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 10px;
+  .pg-btn { width: 40px; height: 40px; border-radius: 12px; border: 1px solid $border; background: #fff; cursor: pointer; display: grid; place-items: center; }
+  .pages { color: $muted; }
+}

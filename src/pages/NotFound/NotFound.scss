@@ -1,0 +1,39 @@
+.notfound {
+  min-height: 60vh;
+  display: grid;
+  place-items: center;
+}
+
+.notfound .art {
+  text-align: center;
+  background: #fff;
+  border: 1px solid #edf2f7;
+  padding: 28px 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+}
+
+.notfound .code {
+  font-size: 64px;
+  line-height: 1;
+  margin: 0 0 10px;
+  letter-spacing: 2px;
+  background: linear-gradient(135deg, #ff4d4f 0%, #3b82f6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.notfound p { color: #4a5568; margin: 0 0 16px; }
+
+.notfound .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.notfound .btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 14px; border-radius: 10px; border: 1px solid transparent; cursor: pointer; text-decoration: none; }
+.notfound .btn.primary { background: #ff4d4f; color: #fff; }
+.notfound .btn.primary:hover { filter: brightness(0.95); }
+.notfound .btn.ghost { background: #fff; color: #1a202c; border-color: #e2e8f0; }
+
+@media (max-width: 576px) {
+  .notfound .code { font-size: 48px; }
+}
+
+

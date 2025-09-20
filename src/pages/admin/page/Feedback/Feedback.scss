@@ -1,0 +1,67 @@
+.admin-feedback {
+  padding: 16px;
+  
+}
+
+.af-header {
+  display: grid;
+  grid-template-columns: 1fr ;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.af-title { display: inline-flex; align-items: baseline; gap: 10px; }
+.af-count { font-size: 13px; color: #6b7280; background: #f3f4f6; padding: 4px 8px; border-radius: 999px; }
+
+.af-search {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 12px;
+  outline: none;
+  
+}
+
+.af-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.af-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.af-item::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(180deg, #ff4d4f, #3b82f6);
+}
+
+
+.af-user { display: inline-flex; gap: 10px; align-items: center; }
+.af-avatar { width: 40px; height: 40px; border-radius: 12px; background: linear-gradient(135deg, #ffedd5, #e0f2fe); display: grid; place-items: center; font-weight: 800; color: #111827; }
+.af-name { font-weight: 700; }
+.af-email { font-size: 13px; color: #6b7280; }
+.af-subject { font-weight: 600; color: #111827; background: #f8fafc; border: 1px solid #e5e7eb; padding: 6px 10px; border-radius: 999px;justify-self: end; }
+.af-message { margin: 8px 0 0; color: #374151; }
+
+@media (max-width: 992px) {
+  .af-head { grid-template-columns: 1fr ; }
+  .af-subject { justify-self: start; }
+}
+
+.af-empty { text-align: center; padding: 32px 12px; color: #6b7280; }
+.af-empty-art { font-size: 42px; margin-bottom: 8px; }
+
+

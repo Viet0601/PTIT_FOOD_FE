@@ -1,0 +1,55 @@
+.food-information 
+{
+    .food-rating
+    {
+        .food-name 
+        {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px !important;
+        }
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .food-description
+    {
+        font-size: 13px;
+        opacity: 0.8;
+    }
+    .food-price 
+    {
+        font-weight: 600;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+}
+.ant-card-body 
+{
+    padding: 15px 20px !important;
+}
+.food-add-and-remove-have-count
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .food-count-order
+    {
+        font-size: 15px;
+        font-weight: 500;
+    }
+    img 
+    {
+        width: 35px;
+        height: auto;
+
+    }
+    margin-bottom: 10px;
+}
+.food-add-and-remove-have-no-count
+{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+     margin-bottom: 10px;
+}

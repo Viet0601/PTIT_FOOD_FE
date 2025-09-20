@@ -1,0 +1,197 @@
+/*
+  Footer.scss
+  Place this file beside Footer.jsx and import it (already imported at top).
+*/
+
+:root {
+  --footer-bg: #0f1724;
+  --card-bg: #0b1220;
+  --muted: #9aa4b2;
+  --accent: #06b6d4;
+}
+
+.site-footer {
+  background: linear-gradient(180deg, var(--footer-bg), #08101a);
+  color: white;
+  padding: 40px 20px 18px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+.brand {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.logo {
+  width: 150px;
+ 
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  transform-origin: center;
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.logo.placeholder {
+  background: linear-gradient(135deg, #0f1724 0%, #13202b 100%);
+  display: inline-grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+}
+
+.brand-text .store-name {
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: 0.2px;
+}
+
+.brand-text .tagline {
+  margin: 4px 0 0 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.contacts h4,
+.links h4 {
+  margin: 0 0 10px 0;
+  font-size: 0.95rem;
+}
+
+.contacts ul,
+.links nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contacts li {
+  margin-bottom: 8px;
+}
+
+.contacts a {
+  display: flex;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+  align-items: baseline;
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.contacts a:hover {
+  transform: translateX(6px);
+  color: var(--accent);
+}
+
+.contacts .label {
+  color: var(--muted);
+  margin-right: 6px;
+  min-width: 70px;
+  display: inline-block;
+}
+
+.links ul li {
+  margin-bottom: 8px;
+}
+
+.links a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 180ms ease, transform 200ms ease;
+}
+
+.links a:hover {
+  color: var(--accent);
+  transform: translateX(6px);
+}
+
+.socials {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+}
+
+.social {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.02);
+  text-decoration: none;
+  transition: transform 230ms cubic-bezier(.2,.9,.3,1), background 180ms ease;
+}
+
+.social:hover {
+  transform: translateY(-4px) scale(1.06);
+  background: rgba(255,255,255,0.04);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 18px auto 0 auto;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+/* Smooth entrance animation */
+.footer-inner > * {
+  opacity: 0;
+  transform: translateY(8px);
+  animation: fadeUp 400ms ease forwards;
+}
+
+.footer-inner > *:nth-child(1) { animation-delay: 60ms; }
+.footer-inner > *:nth-child(2) { animation-delay: 120ms; }
+.footer-inner > *:nth-child(3) { animation-delay: 180ms; }
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .footer-inner { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 768px) {
+  .logo
+  {
+    display: none;
+  }
+}
+@media (max-width: 640px) {
+  .footer-inner { grid-template-columns: 1fr; gap: 18px;place-self: center; }
+  .brand { align-items: flex-start; }
+ 
+  .contacts .label { min-width: 60px; }
+  .contacts
+  {
+    
+  }
+}
+
+/* Small tweaks for very small screens */
+@media (max-width: 380px) {
+  .brand-text .store-name { font-size: 0.95rem; }
+}
+
+/* Utility: focus visible */
+a:focus {
+  outline: 3px solid rgba(6,182,212,0.18);
+  outline-offset: 2px;
+}
+
+/* End of Footer.scss */

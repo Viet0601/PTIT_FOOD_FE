@@ -1,0 +1,123 @@
+.admin-orders {
+  
+  padding: 20px;
+  background: #fff;
+  &-search
+  {
+    display: grid;
+    grid-template-columns: 1fr ;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 14px;
+    input {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 10px 12px;
+      outline: none;
+    }
+  }
+  .title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #e27432;
+  }
+
+  .orders-table {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .table-header,
+  .table-row {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 2fr 1fr;
+    align-items: center;
+    background: #f9f9f9;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  .table-row {
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .cell {
+    padding: 6px;
+  }
+
+  .status-select {
+    padding: 4px 6px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    outline: none;
+  }
+
+  .btn-detail {
+    background: #e27432;
+    border: none;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #c85f28;
+    }
+  }
+
+  .order-details {
+    grid-column: span 5;
+    margin-top: 10px;
+    padding: 12px;
+    background: #fafafa;
+    border-radius: 8px;
+
+    h4 {
+      margin-bottom: 10px;
+      color: #333;
+    }
+
+    .details-header,
+    .details-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      padding: 6px 0;
+    }
+
+    .details-header {
+      font-weight: 600;
+      border-bottom: 1px solid #ddd;
+    }
+  }
+
+  /* 📱 Responsive */
+  @media (max-width: 768px) {
+    .table-header {
+      display: none;
+    }
+
+    .table-row {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px;
+      gap: 8px;
+    }
+
+    .order-details {
+      grid-column: unset;
+      width: 100%;
+    }
+  }
+}

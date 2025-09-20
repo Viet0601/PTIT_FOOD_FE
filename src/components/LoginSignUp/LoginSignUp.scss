@@ -1,0 +1,8 @@
+.form_cover
+{
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.362);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}

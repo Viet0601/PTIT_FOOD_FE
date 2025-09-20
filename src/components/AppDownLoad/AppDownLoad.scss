@@ -1,0 +1,59 @@
+.app-down-load 
+{
+    margin: auto auto;
+    width: fit-content;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    h3 
+    {
+        font-weight: 500;
+        margin-bottom: 5px;
+    }
+    p 
+    {
+        font-weight: 600;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 5px !important;
+    }
+    .app-down-load-platform
+    {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+        img 
+        {
+            width: 160px;
+            
+        }
+        img:hover
+        {
+            scale: 1.05;
+            cursor: pointer;
+            transition: 0.4s;
+        }
+    }
+}
+@media (max-width:576px) {
+    .app-down-load
+    {
+        h3 
+        {
+            font-size: 18px;
+            
+        }
+        p 
+        {
+            font-size: 25px;
+        }
+    }
+    .app-down-load-platform 
+    {
+        flex-direction: column !important;
+        img 
+        {
+            width: 120px;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+.add-food 
+{
+    
+    padding: 40px 20px;
+    
+    .add-food-form 
+    {
+        margin: auto auto;
+        max-width: 800px;
+        .image-food-display
+        {
+            width: 100%;
+        }
+    }
+    .add-food-btn-add
+    {
+        display: flex;
+        max-width: 800px;
+        margin: auto auto;
+        justify-content: end;
+        button 
+        {
+            
+            margin-top: 20px;
+            padding: 5px 40px;
+            border: none;
+            background-color: black;
+            color: #fff;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+    }
+}

@@ -1,0 +1,80 @@
+.policy
+{
+  padding: 40px 0 80px 0;
+}
+
+.policy-hero
+{
+  text-align: center;
+  margin-bottom: 32px;
+  h1
+  {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  p
+  {
+    color: #606770;
+    font-size: 16px;
+  }
+}
+
+.policy-section
+{
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  margin-bottom: 16px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  h2
+  {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  p, li
+  {
+    color: #2d3436;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+}
+
+.policy-section:hover
+{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+}
+
+@media (min-width: 768px)
+{
+  .policy
+  {
+    padding: 48px 0 96px 0;
+  }
+  .policy-hero h1
+  {
+    font-size: 40px;
+  }
+  .policy-section
+  {
+    padding: 24px 28px;
+  }
+}
+
+@media (min-width: 1200px)
+{
+  .policy
+  {
+    padding: 56px 0 112px 0;
+  }
+  .policy-hero h1
+  {
+    font-size: 44px;
+  }
+}
+
+

@@ -1,0 +1,85 @@
+
+/* File: ReviewOrderModal.scss */
+
+$primary: #e27432;
+$white: #ffffff;
+$backdrop: rgba(10,12,20,0.48);
+$muted: #6b7280;
+$radius: 12px;
+
+.rom-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+  animation: rom-backdrop-fade 260ms ease forwards;
+}
+
+.rom-modal {
+  width: min(920px, calc(100% - 40px));
+  max-height: calc(100vh - 80px);
+  overflow: auto;
+  background: $white;
+  border-radius: $radius;
+  box-shadow: 0 12px 40px rgba(2,6,23,0.18);
+  transform-origin: center;
+  animation: rom-pop 320ms cubic-bezier(.18,.9,.24,1) forwards;
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+.rom-header {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+.rom-header h3 { margin:0; font-size:18px; }
+.rom-close { background:transparent; border:none; font-size:18px; cursor:pointer; padding:6px; }
+
+.rom-body { padding: 18px; }
+.rom-intro { margin: 0 0 12px 0; color: $muted; }
+
+.rom-items { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:12px; }
+.rom-item { display:flex; gap:14px; padding:10px; border-radius:10px; align-items:flex-start; border:1px solid rgba(0,0,0,0.04); }
+.rom-thumb { width:68px; height:68px; border-radius:8px; object-fit:cover; }
+.rom-thumb--placeholder { display:grid; place-items:center; background: #f3f4f6; color:$muted; font-weight:700; }
+.rom-item-main { flex:1; }
+.rom-item-title { font-weight:700; margin-bottom:8px; }
+
+.rom-rating { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.rom-star { background:transparent; border:none; font-size:20px; cursor:pointer; padding:4px; transition:transform 120ms ease, color 120ms ease; color: #d1d5db; }
+.rom-star.filled { color: $primary; transform:translateY(-3px); text-shadow:0 3px 8px rgba(226,116,50,0.14); }
+.rom-rating-num { color:$muted; font-size:13px; }
+
+.rom-textarea { width:100%; border-radius:8px; border:1px solid #e6e6e6; padding:10px; min-height:64px; resize:vertical; font-size:14px; }
+
+.rom-footer { display:flex; justify-content:flex-end; gap:12px; padding: 14px 18px; border-top:1px solid rgba(0,0,0,0.04); }
+.rom-btn { padding:8px 14px; border-radius:10px; border:none; cursor:pointer; font-weight:700; }
+.rom-cancel { background:#f3f4f6; }
+.rom-submit { background:$primary; color:#fff; box-shadow:0 8px 24px rgba(226,116,50,0.18); }
+
+/* backdrop fade animation uses pseudo-element to gradually dim background */
+.rom-backdrop::before { content: ''; position: absolute; inset: 0; background: $backdrop; opacity:0; animation: rom-dim 260ms ease forwards; border-radius:0; }
+
+@keyframes rom-dim { from { opacity: 0; } to { opacity: 1; } }
+@keyframes rom-backdrop-fade { from { background: transparent; } to { background: transparent; } }
+@keyframes rom-pop { 0% { transform: translateY(18px) scale(.98); opacity:0 } 60% { transform: translateY(-6px) scale(1.01); opacity:1 } 100% { transform: translateY(0) scale(1); opacity:1 } }
+
+/* Responsive */
+@media (max-width: 880px) {
+  .rom-modal { width: calc(100% - 24px); }
+  .rom-item { flex-direction:row; }
+}
+@media (max-width: 520px) {
+  .rom-item { flex-direction:column; align-items:stretch; }
+  .rom-thumb { width:56px; height:56px; }
+  .rom-rating { gap:6px; }
+}
+
+/* small accessibility tweaks */
+.rom-star:focus { outline: 2px solid rgba(226,116,50,0.22); outline-offset:2px; }
+

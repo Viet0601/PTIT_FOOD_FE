@@ -1,0 +1,288 @@
+$primary: #E27432;
+$bg: #ffffff;
+$text: #111827; // slate-900
+$muted: #6b7280; // gray-500
+$border: #e5e7eb; // gray-200
+$shadow: 0 10px 20px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.06);
+
+// Smooth animations
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+* { box-sizing: border-box; }
+
+.fv-page {
+  background: $bg;
+  color: $text;
+  min-height: 100vh;
+  padding: clamp(16px, 3vw, 32px);
+}
+
+.fv-header {
+  margin-bottom: 16px;
+  h1 {
+    font-size: clamp(24px, 3.2vw, 36px);
+    margin: 0 0 6px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+  p {
+    margin: 0;
+    color: $muted;
+  }
+}
+
+.fv-toolbar {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: 1fr;
+  margin-bottom: 16px;
+
+  @media (min-width: 860px) {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+  }
+}
+
+.fv-search {
+  position: relative;
+  input {
+    width: 100%;
+    padding: 12px 40px 12px 14px;
+    border: 1px solid $border;
+    border-radius: 14px;
+    outline: none;
+    background: #fff;
+    transition: box-shadow .25s ease, border-color .25s ease;
+    &:focus {
+      border-color: rgba(226, 116, 50, .55);
+      box-shadow: 0 0 0 6px rgba(226, 116, 50, .12);
+    }
+  }
+  .fv-search-icon {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    font-size: 18px;
+  }
+}
+
+.fv-controls {
+  display: grid;
+  gap: 10px;
+  @media (min-width: 860px) {
+    grid-auto-flow: column;
+    align-items: center;
+    justify-content: end;
+  }
+}
+
+.fv-categories {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 650px;
+  gap: 8px;
+}
+
+.fv-chip {
+  border: 1px solid $border;
+  background: #fff;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+
+  &:hover { transform: translateY(-1px); box-shadow: $shadow; }
+  &.active {
+    border-color: transparent;
+    background: $primary;
+    color: white;
+    box-shadow: $shadow;
+  }
+}
+
+.fv-sort {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 14px;
+  select {
+    border: 1px solid $border;
+    padding: 8px 12px;
+    border-radius: 12px;
+    outline: none;
+    background: #fff;
+    transition: box-shadow .25s ease, border-color .25s ease;
+    &:focus {
+      border-color: rgba(226, 116, 50, .55);
+      box-shadow: 0 0 0 6px rgba(226, 116, 50, .12);
+    }
+  }
+}
+
+.fv-grid {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: grid;
+  gap: clamp(12px, 2vw, 18px);
+  grid-template-columns: 1fr; // mobile default: 1 per row
+
+  @media (min-width: 576px) { // small devices
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 860px) { // tablets
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1200px) { // desktops
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.fv-card {
+  background: #fff;
+  border: 1px solid $border;
+  border-radius: 18px;
+  box-shadow: $shadow;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  animation: fadeUp .4s ease both;
+  transition: transform .2s ease, box-shadow .2s ease;
+
+  &:hover { transform: translateY(-4px); box-shadow: 0 16px 30px rgba(0,0,0,.08), 0 4px 8px rgba(0,0,0,.06); }
+}
+
+.fv-media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: #fafafa;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transform: scale(1.02);
+    transition: transform .5s ease;
+  }
+  .fv-badge {
+    position: absolute;
+    left: 10px; top: 10px;
+    background: rgba(255,255,255,.9);
+    color: #111;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 13px;
+    box-shadow: $shadow;
+  }
+  .fv-like {
+    position: absolute;
+    right: 10px; top: 10px;
+    border: none;
+    background: rgba(255,255,255,.95);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+    box-shadow: $shadow;
+    &.active { color: $primary; }
+    &:hover { transform: scale(1.05); }
+  }
+  .fv-like:active { transform: scale(.96); }
+}
+
+.fv-card:hover .fv-media img { transform: scale(1.08); }
+
+.fv-body {
+  padding: 12px 14px 8px;
+}
+
+.fv-title {
+  margin: 0 0 6px;
+  font-size: 16px;
+  line-height: 1.3;
+}
+
+.fv-meta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: $muted;
+}
+
+.fv-category {
+  padding: 4px 8px;
+  background: #f8fafc;
+  border: 1px solid $border;
+  border-radius: 999px;
+}
+
+.fv-dot { width: 4px; height: 4px; background: $border; border-radius: 50%; display: inline-block; }
+
+.fv-price { color: $primary; font-weight: 700; }
+
+.fv-desc {
+  margin: 8px 0 0;
+  color: #374151; // gray-700
+  font-size: 14px;
+}
+
+.fv-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 12px;
+}
+
+.fv-btn {
+  border: none;
+  background: $primary;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: $shadow;
+  transition: transform .15s ease, box-shadow .2s ease, filter .2s ease;
+
+  &:hover { filter: brightness(1.05); box-shadow: 0 18px 30px rgba(226, 116, 50, .25), 0 4px 8px rgba(226, 116, 50, .18); }
+  &:active { transform: translateY(1px) scale(.99); }
+
+  &.outline {
+    background: #fff;
+    color: $primary;
+    border: 1px solid rgba(226, 116, 50, .35);
+  }
+}
+
+.fv-empty {
+  max-width: 720px;
+  margin: 32px auto 0;
+  text-align: center;
+  animation: popIn .35s ease both;
+
+  img {
+    width: min(560px, 100%);
+    border-radius: 16px;
+    border: 1px solid $border;
+    box-shadow: $shadow;
+    margin-bottom: 16px;
+  }
+
+  h3 { margin: 8px 0 6px; font-size: 22px; }
+  p { margin: 0 0 14px; color: $muted; }
+}

@@ -1,0 +1,132 @@
+
+.pay-success-payment_success_component {
+  min-height: calc(100vh - 100px);
+  display: grid;
+  place-items: center;
+  background: #fff;
+  padding: 24px; 
+}
+
+.card-payment_success_component {
+  position: relative;
+  width: min(560px, 92vw);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+  padding: 32px 28px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.icon-wrap-payment_success_component { 
+  width: 96px; 
+  height: 96px; 
+  margin: 0 auto 12px; 
+}
+
+.icon-payment_success_component { 
+  display: block; 
+}
+
+/* Brand color */
+:root { --brand: #E27432; }
+
+.ring-payment_success_component {
+  fill: none;
+  stroke: var(--brand);
+  opacity: .18;
+}
+
+.tick-payment_success_component {
+  stroke: var(--brand);
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+  animation: draw 850ms ease-out 200ms forwards;
+}
+
+@keyframes draw { to { stroke-dashoffset: 0; } }
+
+.payment_success_component_h1 { 
+  margin: 8px 0 6px; 
+  font-size: clamp(20px, 1.5vw + 12px, 28px); 
+  font-weight: 600; 
+  letter-spacing: 0.2px;
+}
+
+.sub-payment_success_component { 
+  margin: 0 0 18px; 
+  color: #5f6368; 
+}
+
+.actions-payment_success_component { margin-top: 10px;
+display: flex;
+justify-content: center;
+}
+
+.btn-home-payment_success_component {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--brand);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform .15s ease, box-shadow .2s ease, background .2s ease;
+  box-shadow: 0 6px 16px rgba(226, 116, 50, .35);
+}
+
+.btn-home-payment_success_component:hover { 
+  transform: translateY(-1px); 
+  box-shadow: 0 8px 18px rgba(226, 116, 50, .45);
+}
+
+/* confetti-payment_success_component ------------------ */
+.confetti-payment_success_component { 
+  position: fixed; 
+  inset: 0; 
+  overflow: hidden; 
+  pointer-events: none; 
+}
+.confetti-payment_success_component span { 
+  position: absolute; 
+  top: -12px; 
+  width: 8px; 
+  height: 14px; 
+  background: var(--brand); 
+  opacity: .9; 
+  border-radius: 2px; 
+  animation: fall 2.8s linear infinite; 
+}
+
+@keyframes fall {
+  0% { transform: translateY(-12px) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(360deg); }
+}
+
+/* Vanilla CSS fallback using nth-child */
+.confetti-payment_success_component span:nth-child(odd) { background: #ffd166; }
+.confetti-payment_success_component span:nth-child(3n) { background: #06d6a0; }
+.confetti-payment_success_component span:nth-child(5n) { background: #118ab2; }
+
+/* Randomize positions & delays */
+.confetti-payment_success_component span:nth-child(1) { left: 2%;  animation-delay: .0s; }
+.confetti-payment_success_component span:nth-child(2) { left: 8%;  animation-delay: .3s; }
+.confetti-payment_success_component span:nth-child(3) { left: 14%; animation-delay: .6s; }
+.confetti-payment_success_component span:nth-child(4) { left: 20%; animation-delay: .1s; }
+.confetti-payment_success_component span:nth-child(5) { left: 26%; animation-delay: .5s; }
+.confetti-payment_success_component span:nth-child(6) { left: 32%; animation-delay: .2s; }
+.confetti-payment_success_component span:nth-child(7) { left: 38%; animation-delay: .7s; }
+.confetti-payment_success_component span:nth-child(8) { left: 44%; animation-delay: .15s; }
+.confetti-payment_success_component span:nth-child(9) { left: 50%; animation-delay: .45s; }
+.confetti-payment_success_component span:nth-child(10){ left: 56%; animation-delay: .05s; }
+.confetti-payment_success_component span:nth-child(11){ left: 62%; animation-delay: .25s; }
+.confetti-payment_success_component span:nth-child(12){ left: 68%; animation-delay: .65s; }
+.confetti-payment_success_component span:nth-child(13){ left: 74%; animation-delay: .35s; }
+.confetti-payment_success_component span:nth-child(14){ left: 80%; animation-delay: .75s; }
+.confetti-payment_success_component span:nth-child(15){ left: 86%; animation-delay: .4s; }
+
+@media (max-width: 480px) {
+  .card-payment_success_component { padding: 28px 20px; border-radius: 20px; }
+  .btn-home-payment_success_component { width: 100%; }
+}
+

@@ -1,0 +1,122 @@
+// File: AddressList.scss
+$primary: #e27432;
+$light-bg: #ffffff;
+$border: #e5e7eb;
+
+.addr-container {
+  background: $light-bg;
+  border-radius: 12px;
+  padding: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  animation: fadeIn 250ms ease;
+}
+
+.addr-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.addr-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.addr-item {
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 180ms ease;
+}
+.addr-item:hover { transform: translateY(-2px); }
+
+.addr-info {
+  font-size: 15px;
+  color: #333;
+}
+
+.addr-item-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.addr-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  animation: slideIn 220ms ease;
+}
+
+.addr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+}
+
+.addr-form input,
+.addr-form textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid $border;
+  font-size: 14px;
+  outline: none;
+}
+
+.addr-form textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.addr-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn.add { background: $primary; color: #fff; }
+.btn.save { background: $primary; color: #fff; }
+.btn.cancel { background: #f3f4f6; }
+.btn.edit { background: #f3f4f6; }
+.btn.delete { background: #fee2e2; color: #b91c1c; }
+
+/* animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .addr-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .addr-item-actions { align-self: flex-end; }
+}

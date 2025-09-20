@@ -1,0 +1,183 @@
+@use "sass:color";
+$primary: #E27432; // main brand color
+$muted: #6b6b6b;
+$white: #ffffff;
+$shadow: 0 8px 24px rgba(0,0,0,0.08);
+
+.contact-page {
+  background: $white;
+  color: #222;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 28px 20px;
+  }
+
+  .hero {
+    padding: 36px 0;
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: center;
+
+      @media (max-width: 900px) {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-info {
+        .title {
+          font-size: 2rem;
+          margin: 0 0 8px;
+          color: $primary;
+          letter-spacing: -0.5px;
+          transition: transform 320ms ease, opacity 320ms ease;
+        }
+
+        .subtitle {
+          margin-bottom: 18px;
+          color: $muted;
+        }
+
+        .contact-cards {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+
+          .card {
+            background: color.adjust($primary, $lightness: 46%);
+            padding: 12px 14px;
+            border-radius: 10px;
+            min-width: 160px;
+            box-shadow: $shadow;
+            transition: transform 220ms ease, box-shadow 220ms ease;
+
+            &:hover { transform: translateY(-6px); box-shadow: 0 14px 30px rgba(0,0,0,0.08); }
+
+           h4 {
+  margin: 0 0 6px;
+  color: color.adjust($primary, $lightness: -8%);
+}
+            p { margin:0; color: #333; font-weight: 600; }
+          }
+        }
+
+        .actions {
+          margin-top: 18px;
+          display:flex;
+          gap:12px;
+
+          .btn {
+            display:inline-block;
+            padding: 10px 16px;
+            border-radius: 10px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 180ms ease, box-shadow 180ms ease, opacity 180ms;
+
+            &.primary {
+              background: $primary;
+              color: $white;
+              box-shadow: 0 8px 24px rgba(226,116,50,0.18);
+
+              &:hover { transform: translateY(-4px); }
+            }
+
+            &.ghost {
+              background: transparent;
+              color: $primary;
+              border: 1px solid color.adjust($primary, $lightness: 18%);
+
+
+              &:hover { opacity: 0.9; transform: translateY(-3px); }
+            }
+          }
+        }
+      }
+
+      .hero-image {
+        .photo {
+          width: 100%;
+          height: 320px;
+          border-radius: 16px;
+          background-size: cover;
+          background-position: center;
+          box-shadow: $shadow;
+          transition: transform 520ms cubic-bezier(.2,.9,.1,1), filter 520ms;
+
+          &:hover { transform: scale(1.03); filter: saturate(1.06); }
+
+          @media (max-width: 900px) { height: 220px; }
+        }
+      }
+    }
+  }
+
+  .about {
+    padding: 18px 0 40px;
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 24px;
+
+      @media (max-width: 900px) { grid-template-columns: 1fr; }
+
+      .about-text {
+        h2 { color: $primary; margin-bottom: 12px; }
+        p { color: $muted; line-height: 1.6; }
+        ul { margin-top: 12px; color: $muted; li { margin-bottom: 8px; } }
+      }
+
+      .about-gallery {
+        .gallery-grid {
+          display: grid;
+          grid-template-columns: repeat(2,1fr);
+          gap: 10px;
+
+          .thumb {
+            height: 110px;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            box-shadow: $shadow;
+            transition: transform 300ms ease, opacity 300ms;
+
+            &:hover { transform: translateY(-6px); opacity: .98; }
+          }
+        }
+      }
+    }
+  }
+
+  .map-section {
+    padding: 28px 0 60px;
+
+    h3 { color: $primary; margin-bottom: 12px; }
+
+    .map-wrap {
+      width: 100%;
+      height: 360px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: $shadow;
+
+      iframe { width: 100%; height: 100%; border: 0; }
+
+      @media (max-width: 600px) { height: 260px; }
+    }
+  }
+
+  // subtle page entrance animation
+  & > section { opacity: 0; transform: translateY(10px); animation: fadeInUp 520ms ease forwards; }
+  & > section:nth-of-type(1) { animation-delay: 0ms; }
+  & > section:nth-of-type(2) { animation-delay: 80ms; }
+  & > section:nth-of-type(3) { animation-delay: 140ms; }
+
+  @keyframes fadeInUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
