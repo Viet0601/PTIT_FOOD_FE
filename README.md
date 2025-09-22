@@ -4,6 +4,10 @@
 
 ## 📖 Giới thiệu
 Frontend của dự án **Food PTIT** sử dụng React, Vite, Redux Toolkit, Ant Design và nhiều thư viện hiện đại khác để xây dựng giao diện người dùng tương tác, responsive và mượt mà.
+***Tài khoản admin test***
+***Email*** : ptitfood@gmail.com
+***Password*** : ptitfood2025#
+***Url***: /admin
 
 ---
 
