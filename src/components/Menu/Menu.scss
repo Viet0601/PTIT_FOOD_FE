@@ -22,17 +22,19 @@
         gap: 40px;
         &-item 
         {
-           
+            
             img 
             {
-            min-width: 80px; 
-            width: 7.5vw;
+                width: 80px;
+                height: 80px;
+                object-fit: cover;
                 border-radius: 50px;
                 transition: 0.2s;
             }
             cursor: pointer;
             p 
             {
+            text-align: center;
                 margin-top: 10px;
             }
             display: flex;

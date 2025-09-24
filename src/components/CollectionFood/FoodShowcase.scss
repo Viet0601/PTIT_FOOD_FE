@@ -54,7 +54,9 @@ $shadow: 0 10px 30px rgba(18,20,23,0.08);
 .fg-grid {
   min-height: 300px;
   list-style: none; display: grid; grid-template-columns: repeat(1, minmax(0,1fr)); gap: 14px; padding: 0; margin: 0;
-  @media (min-width: 640px) { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  @media (min-width: 576px) { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  @media (min-width: 768px) { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  @media (min-width: 992px) { grid-template-columns: repeat(4, minmax(0,1fr)); }
   @media (min-width: 1024px) { grid-template-columns: repeat(4, minmax(0,1fr)); }
 }
 .fg-grid-no-data 
@@ -82,7 +84,7 @@ $shadow: 0 10px 30px rgba(18,20,23,0.08);
   h3 { margin: 0; font-size: 16px; font-weight: 700; }
   .category { font-size: 12px; color: $muted; border: 1px solid $border; padding: 4px 8px; border-radius: 999px; }
   .meta { display: flex; align-items: center; justify-content: space-between; color: $muted; }
-  .price { color: $text; font-weight: 800; }
+  .price { color: $text; font-weight: 600; font-size: 20px; }
 
   .add-btn {
     display: inline-flex; align-items: center; gap: 8px; justify-content: center; width: 100%;

@@ -8,8 +8,9 @@ import {  addToFavoriteService, getAllFoodService } from "../../service/apiServi
 import { queryKey } from "../../queryKey/queryKey";
 import { useNavigate } from "react-router";
 import { LINK } from "../../utils/constant";
-import { Pagination, Table } from "antd";
+import { Empty, Pagination, Table } from "antd";
 import { toast } from "react-toastify";
+import FoodListLoading from "../Loading/FoodListLoading";
 
 /**
  * Demo data — bạn có thể fetch từ API sau này
@@ -24,12 +25,11 @@ const fadeIn = {
 
 export default function FoodGallery() {
   const navigate=useNavigate()
-  const {CATEGORIES,favoriteFood,addToFavoriteFood,addToCart}=useContext(StoreContext)
+  const {CATEGORIES,favoriteFood,addToFavoriteFood,addToCart,loadingFood,setLoadingFood,category,setCategory}=useContext(StoreContext)
   const [query, setQuery] = useState("");
-  const [category, setCategory] = useState("0");
+  
   const [sort, setSort] = useState("popular");
-  const [favorites, setFavorites] = useState([]);
-  const [cart, setCart] = useState([]);
+ 
   const [page, setPage] = useState(1);
   const [listIdFavoriteFood,setlistIdFavoriteFood]=useState([]);
   const perPage = 8;
@@ -54,13 +54,15 @@ export default function FoodGallery() {
     const { error,isError,data:foods } = useQuery({
   queryKey: queryKey.fetchFoodByCategory(page,category),
   queryFn: async () => {
+    setLoadingFood(true)
     const response= await getAllFoodService(page,perPage,category==="0"?'ALL':category)
     if(response && response.ec===200)
     {
+      setLoadingFood(false)
       return response.dt;
     }
-
-    return []
+    setLoadingFood(false)
+    return {listFood:[],totalPage:0}
   },
 })
   
@@ -148,14 +150,14 @@ export default function FoodGallery() {
       {/* Grid */}
       <AnimatePresence mode="popLayout">
         <motion.ul
-          className={filtered && filtered.length>0 ? "fg-grid":"fg-grid-no-data"}
+          className={ loadingFood===false &&  filtered && filtered.length>0 ? "fg-grid":"fg-grid-no-data"}
           layout
           initial="hidden"
           animate="show"
           exit="hidden"
           variants={{ show: { transition: { staggerChildren: 0.05 } } }}
         >
-          {filtered && filtered.length>0 ? filtered.map((d) => (
+          {loadingFood  ? <FoodListLoading/> : filtered && filtered.length>0 ? filtered.map((d) => (
             <motion.li key={d.id} className="card" variants={fadeIn} layout>
               <div className="thumb" style={{cursor:"pointer"}} onClick={()=>navigate(`${LINK.FOOD_DETAIL}/${d?.id}`)}>
                 <img src={d.images[0]} alt={d.name} loading="lazy" />
@@ -185,7 +187,10 @@ export default function FoodGallery() {
                 </button>
               </div>
             </motion.li>
-          )):<Table style={{width:"100%",height:"100%"}} columns={[]} dataSource={[]} />}
+          )):<Table style={{width:"100%",height:"100%"}} columns={[]} dataSource={[]} locale={{
+        emptyText: <Empty description="Chưa có món ăn nào" />,
+      }} />}
+          {/* {loadingFood && } */}
         </motion.ul>
       </AnimatePresence>
 

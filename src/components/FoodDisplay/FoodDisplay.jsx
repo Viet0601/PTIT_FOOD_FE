@@ -11,6 +11,7 @@ import { LINK } from "../../utils/constant";
 import { useQuery } from "@tanstack/react-query";
 import { queryKey } from "../../queryKey/queryKey";
 import { getAllFoodService } from "../../service/apiService";
+import FoodListLoading from "../Loading/FoodListLoading";
 
 const DISHES = [
   { id: 1, name: "Bún Bò Huế", price: 59000, category: "Món chính", rating: 4.8, img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200&auto=format&fit=crop" },
@@ -34,7 +35,7 @@ const fadeIn = {
 };
 
 const FoodDisplay = (props) => {
-  const {favoriteFood,addToFavoriteFood,addToCart,limit,setLoading} = useContext(StoreContext);
+  const {favoriteFood,addToFavoriteFood,addToCart,limit,setLoadingFood,loadingFood} = useContext(StoreContext);
   // const { category } = props;
   const [query, setQuery] = useState("");
     const [category, setCategory] = useState("Tất cả");
@@ -49,14 +50,17 @@ const FoodDisplay = (props) => {
       queryKey:queryKey.fetchAllFoodByPaginate(page),
       queryFn:async()=>{
         // setLoading(true)
+        setLoadingFood(true);
         const reponse= await getAllFoodService(page,limit,"ALL");
         if(reponse && reponse.ec==200)
         {
           // setLoading(false)
+           setLoadingFood(false);
           return reponse.dt;
         }
         // setLoading(false)
-        return [];
+         setLoadingFood(false);
+        return {listFood:[],totalPage:0};
   
       }
     }) 
@@ -93,15 +97,15 @@ const FoodDisplay = (props) => {
         })}
       </div> */}
         <AnimatePresence mode="popLayout">
-       {foods && foods.listFood && foods.listFood.length>0&& <motion.ul
-          className="fg-grid"
+       { <motion.ul
+          className={ loadingFood ===false &&  foods && foods.listFood && foods.listFood.length>0 ? "fg-grid":"fg-grid-no-data"}
           layout
           initial="hidden"
           animate="show"
           exit="hidden"
           variants={{ show: { transition: { staggerChildren: 0.05 } } }}
         >
-          { foods && foods.listFood && foods.listFood.length>0 &&  foods.listFood.map((d) => (
+          { loadingFood ? <FoodListLoading/> :  foods && foods.listFood && foods.listFood.length>0 &&  foods.listFood.map((d) => (
             <motion.li key={d.id} className="card" variants={fadeIn} layout>
               <div className="thumb" style={{cursor:"pointer"}} onClick={()=>navigate(`${LINK.FOOD_DETAIL}/${d?.id}`)}>
                 <img src={d.images[0]} alt={d.name} loading="lazy" />
@@ -133,7 +137,9 @@ const FoodDisplay = (props) => {
           ))}
         </motion.ul>}
       {foods && foods.listFood && foods.listFood.length===0 &&   <div className="box_empty w-100">
-          <Table style={{width:"100%",height:"100%"}} columns={[]} dataSource={[]} />
+          <Table style={{width:"100%",height:"100%"}} columns={[]} dataSource={[]}  locale={{
+        emptyText: <Empty description="Chưa có món ăn nào" />,
+      }}/>
         </div>}
       </AnimatePresence>
 

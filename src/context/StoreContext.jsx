@@ -12,10 +12,13 @@ export const StoreContext=createContext(null)
 const StoreContextProvider=(props)=>{
     const navigate=useNavigate()
     const limit=8;
+    const [category, setCategory] = useState("0");
     const [pageOrder,setPageOrder]=useState(1)
     const token = useSelector(state=>state.user.token)
     const dispatch=useDispatch()
     const [loading, setLoading] = useState(false);
+    const [loadingFood, setLoadingFood] = useState(false);
+    const [loadingCategory, setLoadingCategory] = useState(false);
     const [CATEGORIES,setCATEGORIES]=useState([]);
     const [nutrition,setNutrition]=useState([]);
     const [ingredient,setIngredient]=useState([]);
@@ -170,6 +173,7 @@ const StoreContextProvider=(props)=>{
          setLoading(false);
     }
     const getAllCategory=async()=>{
+        setLoadingCategory(true)
         const response=await getAllCategoryService()
         if(response && response.ec===200)
         {
@@ -180,6 +184,7 @@ const StoreContextProvider=(props)=>{
         {
             toast.error(response.em);
         }
+         setLoadingCategory(false)
     }
    
     const getAllFood=async(page)=>{
@@ -240,7 +245,7 @@ const StoreContextProvider=(props)=>{
     const contextValue={dispatch,getProfile,CATEGORIES,favoriteFood,setFavoriteFood,getUserCart,cart,resetStatusIntial,orderPagenate,refetchOrderPagenate
    ,addToFavoriteFood,addToCart,getAllUserAddress,address,order,cancelOrder,getAllMethodPayment,methodPayment,  setPageOrder,pageOrder,
    setLoading,loading,nutrition,setNutrition,ingredient,setIngredient,limit,foods,getAllFood,updateFood,settypeModal,typeModal,setisShowModalLogin,isShowModalLogin,
-   handleLogout,getIngredient
+   handleLogout,getIngredient,loadingFood,setLoadingFood,navigate,loadingCategory,category,setCategory
     }
     return (
         <StoreContext.Provider value={contextValue}>

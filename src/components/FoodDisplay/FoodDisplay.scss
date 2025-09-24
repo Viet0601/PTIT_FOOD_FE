@@ -5,7 +5,7 @@ $muted: #6b7280;
 $card: #ffffff;
 $border: #ececec;
 $shadow: 0 10px 30px rgba(18,20,23,0.08);
-
+.food-display{
 .fg-wrapper {
   --radius: 18px;
   max-width: 1200px;
@@ -13,7 +13,11 @@ $shadow: 0 10px 30px rgba(18,20,23,0.08);
   padding: 0 16px;
   color: $text;
 }
-
+.fg-grid-no-data 
+{
+  width: 100%;
+  min-height: 300px;
+}
 .fg-header {
   display: flex; align-items: center; justify-content: space-between;
   gap: 16px; margin-bottom: 18px;
@@ -99,4 +103,5 @@ $shadow: 0 10px 30px rgba(18,20,23,0.08);
   margin-top: 16px; display: flex; align-items: center; justify-content: center; gap: 10px;
   .pg-btn { width: 40px; height: 40px; border-radius: 12px; border: 1px solid $border; background: #fff; cursor: pointer; display: grid; place-items: center; }
   .pages { color: $muted; }
+}
 }

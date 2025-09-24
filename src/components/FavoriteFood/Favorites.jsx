@@ -132,7 +132,7 @@ export default function Favorites({
       ) : (
         <ul className="fv-grid" role="list">
           {filtered && filtered.length >0 && filtered.map((item) => (
-            <li key={item.id} className="fv-card" role="listitem">
+            <li key={item.id} className="fv-card" role="listitem" style={{cursor:"pointer"}} onClick={()=>navigate(`${LINK.FOOD_DETAIL}/${item.id}`)}>
               <div className="fv-media">
                 <img src={item && item.images[0]} alt={item?.name} loading="lazy" />
                 {item.rating && (
@@ -144,7 +144,7 @@ export default function Favorites({
                   className="fv-like active"
                   title="Xóa khỏi yêu thích"
                   aria-label="Xóa khỏi yêu thích"
-                  onClick={() => addToFavoriteFood(item.id)}
+                  onClick={(e) => {e.stopPropagation(); addToFavoriteFood(item.id)}}
                 >
                   ❤
                 </button>

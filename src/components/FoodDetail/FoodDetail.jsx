@@ -8,7 +8,7 @@ import "./FoodDetail.scss"
 import { StoreContext } from '../../context/StoreContext';
 import ReviewCard from '../ReviewCard/ReviewCard';
 import PerfectScrollbar from 'react-perfect-scrollbar'
-import { Table } from 'antd';
+import { Empty, Table } from 'antd';
 const FoodDetailPage = () => {
   
 const param=useParams()
@@ -206,7 +206,9 @@ const {addToCart,addToFavoriteFood,favoriteFood,setLoading}= useContext(StoreCon
           foodDetail.reviewCustomers.listFeedbacks && foodDetail.reviewCustomers.listFeedbacks.length>0 ?
           foodDetail.reviewCustomers.listFeedbacks.map((r, i) => (
         <ReviewCard key={i} review={r} />
-      )):<Table style={{width:"100%"}} columns={[]} dataSource={[]} />}
+      )):<Table style={{width:"100%"}} columns={[]} dataSource={[]} locale={{
+        emptyText: <Empty description="Chưa có đánh già nào" />,
+      }} />}
          </div>
        </PerfectScrollbar>
      

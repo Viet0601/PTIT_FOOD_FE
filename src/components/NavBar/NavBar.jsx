@@ -31,7 +31,7 @@ const NavBar = (props) => {
     if (location.pathname === LINK.HOME) {
       scrollToTop();
     } else {
-      
+      setselected("home")
       navigate(LINK.HOME);
     }
   };
